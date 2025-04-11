@@ -1,7 +1,4 @@
 import Head from "next/head";
-import Navbar from "../../components/Navbar";
-import Footer from "../../components/Footer";
-
 
 export default function Home() {
   return (
@@ -11,8 +8,6 @@ export default function Home() {
         <meta name="description" content="LOOTBOXX - loot the look" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <Navbar />
 
       <div>
         <img src="/home.png" alt="" />
@@ -98,8 +93,6 @@ export default function Home() {
     {/* <button class="flex mx-auto mt-16 text-white bg-pink-500 border-0 py-2 px-8 focus:outline-none hover:bg-pink-600 rounded text-lg">Button</button> */}
   </div>
       </section>
-
-      <Footer />
 
     </div>
 
