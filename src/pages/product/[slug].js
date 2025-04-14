@@ -1,9 +1,30 @@
 import { useRouter } from 'next/router'
-import React from 'react'
+import React, { useState } from 'react'
 
 const Slug = () => {
   const router = useRouter()
   const { slug } = router.query
+
+  const [pinCode, setPinCode] = useState()
+  const [service, setService] = useState()
+
+  const checkServiceAbility = async () => {
+    let pinCodeList = await fetch('http://localhost:3005/api/pincode')
+    let pinCodeListJson = await pinCodeList.json()
+    if (pinCodeListJson.includes(parseInt(pinCode))) {
+      // alert('Service Available')
+      setService(true)
+    }
+    else {
+      setService(false)
+      // alert('Service Not Available')
+    }
+  }
+
+  const onChangePinCode = (e) => {
+    setPinCode(e.target.value)
+  }
+
   return (
     <>
       <section className="text-gray-600 body-font overflow-hidden">
@@ -11,8 +32,8 @@ const Slug = () => {
           <div className="lg:w-4/5 mx-auto flex flex-wrap">
             <img alt="ecommerce" className="w-[400pxf] h-[400px] object-contain object-center rounded mx-auto bg-white p-2" src="https://m.media-amazon.com/images/I/31I6THUNl8L._SY445_SX342_.jpg" />
             <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-              <h2 className="text-sm title-font text-gray-500 tracking-widest">BRAND NAME</h2>
-              <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">The Catcher in the Rye</h1>
+              <h2 className="text-sm title-font text-gray-500 tracking-widest">LOOTBOOX</h2>
+              <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">Wear the look (XL/Blue)</h1>
               <div className="flex mb-4">
                 <span className="flex items-center">
                   <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 text-pink-500" viewBox="0 0 24 24">
@@ -75,15 +96,76 @@ const Slug = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex">
-                <span className="title-font font-medium text-2xl text-gray-900">$58.00</span>
+
+              {/* <div className="flex">
+                <span className="title-font font-medium text-2xl text-gray-900">₹499</span>
                 <button className="flex ml-auto text-white bg-pink-500 border-0 py-2 px-6 focus:outline-none hover:bg-pink-600 rounded">Add to Cart</button>
+                <button className="flex ml-2 text-white bg-pink-500 border-0 py-2 px-6 focus:outline-none hover:bg-pink-600 rounded">Buy Now</button>
                 <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
+
+
                   <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-5 h-5" viewBox="0 0 24 24">
+                    <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+                  </svg>
+
+                </button>
+              </div> */}
+
+              <div className="flex flex-wrap items-center gap-4 mt-4">
+                <span className="title-font font-medium text-2xl text-gray-900">₹499</span>
+
+                <button className="flex items-center text-white bg-pink-500 border-0 py-2 px-6 focus:outline-none hover:bg-pink-600 rounded">
+                  Add to Cart
+                </button>
+
+                <button className="flex items-center text-white bg-pink-500 border-0 py-2 px-6 focus:outline-none hover:bg-pink-600 rounded">
+                  Buy Now
+                </button>
+
+                <button
+                  aria-label="Add to Wishlist"
+                  className="rounded-full w-10 h-10 bg-gray-200 border-0 inline-flex items-center justify-center text-gray-500 hover:text-red-500 transition-colors"
+                >
+                  <svg
+                    fill="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    className="w-5 h-5"
+                    viewBox="0 0 24 24"
+                  >
                     <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
                   </svg>
                 </button>
               </div>
+
+
+              <div className="PINCODE max-w-full sm:max-w-lg mt-3 bg-gray-100 p-4 rounded-md">
+                <div className="flex flex-col sm:flex-row items-center gap-4">
+                  <span className="text-lg font-medium whitespace-nowrap">Check Pincode</span>
+                  <input
+                    type="text"
+                    placeholder="Enter your pincode"
+                    className="border-2 border-gray-300 rounded-md p-2 w-full sm:w-[250px] text-lg"
+                    onChange={onChangePinCode}
+                  />
+                  <button
+                    className="text-white bg-pink-500 border-0 py-2 px-6 focus:outline-none hover:bg-pink-600 rounded whitespace-nowrap"
+                    onClick={checkServiceAbility}
+                  >
+                    Check
+                  </button>
+                </div>
+              </div>
+
+
+              <div className="text-red-300">
+                {service === true && <span className="text-green-500">Yay! This pincode is servicable</span>}
+                {service === false && <span className="text-red-500">Sorry! We do not deliver to this pincode yet</span>}
+              </div>
+
+
+
             </div>
           </div>
         </div>
