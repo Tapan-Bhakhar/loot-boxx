@@ -1,9 +1,23 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
-import { IoCartOutline } from "react-icons/io5"
+import React, { useRef } from 'react'
+import { IoCartOutline, IoCloseCircleSharp, IoAddCircleOutline, IoRemoveCircleOutline } from "react-icons/io5"
+import { BsBagCheckFill } from "react-icons/bs";
 
 const Navbar = () => {
+    const toggleCart = () => {
+        if (ref.current.classList.contains('translate-x-full')) {
+            ref.current.classList.remove('translate-x-full')
+            ref.current.classList.add('translate-x-0')
+        }
+        else {
+            ref.current.classList.add('translate-x-full')
+            ref.current.classList.remove('translate-x-0')
+        }
+
+    }
+    const ref = useRef()
+
     return (
         <div className='flex flex-col md:flex-row md:justify-start justify-center items-center py-2 shadow-md'>
             <div className="logo mx-5">
@@ -20,9 +34,55 @@ const Navbar = () => {
                 </ul>
             </div>
 
-            <div className="cart absolute right-0 mx-5 top-4">
-                <IoCartOutline className='text-2xl md:text-4xl'/>
+            <div onClick={toggleCart} className="CART absolute right-0 mx-5 top-4 cursor-pointer text-pink-500">
+                <IoCartOutline className='text-2xl md:text-4xl' />
             </div>
+
+            <div ref={ref} className="SLIDECART w-75 h-full absolute top-0 right-0 bg-pink-100 px-8 py-10 transform transition-transform translate-x-full">
+                <h2 className='font-bold text-xl text-center pt-3'>Shopping cart </h2>
+                <span onClick={toggleCart} className="absolute top-4 right-4 cursor-pointer text-3xl text-pink-500"><IoCloseCircleSharp /></span>
+                <ol className='list-decimal font-semibold'>
+                    <li>
+                        <div className="item flex my-5">
+                        <div className='w-2/3 font-semibold'>T-shirt Wear the look.</div>
+                        <div className='w-1/3 flex justify-center items-center font-semibold text-lg'><IoRemoveCircleOutline className='cursor-pointer text-pink-500'/><span className='mx-2'>1</span><IoAddCircleOutline className='cursor-pointer text-pink-500'/></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div className="item flex my-5">
+                        <div className='w-2/3 font-semibold'>T-shirt Wear the look.</div>
+                        <div className='w-1/3 flex justify-center items-center font-semibold text-lg'><IoRemoveCircleOutline className='cursor-pointer text-pink-500'/><span className='mx-2'>1</span><IoAddCircleOutline className='cursor-pointer text-pink-500'/></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div className="item flex my-5">
+                        <div className='w-2/3 font-semibold'>T-shirt Wear the look.</div>
+                        <div className='w-1/3 flex justify-center items-center font-semibold text-lg'><IoRemoveCircleOutline className='cursor-pointer text-pink-500'/><span className='mx-2'>1</span><IoAddCircleOutline className='cursor-pointer text-pink-500'/></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div className="item flex my-5">
+                        <div className='w-2/3 font-semibold'>T-shirt Wear the look.</div>
+                        <div className='w-1/3 flex justify-center items-center font-semibold text-lg'><IoRemoveCircleOutline className='cursor-pointer text-pink-500'/><span className='mx-2'>1</span><IoAddCircleOutline className='cursor-pointer text-pink-500'/></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div className="item flex my-5">
+                        <div className='w-2/3 font-semibold'>T-shirt Wear the look.</div>
+                        <div className='w-1/3 flex justify-center items-center font-semibold text-lg'><IoRemoveCircleOutline className='cursor-pointer text-pink-500'/><span className='mx-2'>1</span><IoAddCircleOutline className='cursor-pointer text-pink-500'/></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div className="item flex my-5">
+                        <div className='w-2/3 font-semibold'>T-shirt Wear the look.</div>
+                        <div className='w-1/3 flex justify-center items-center font-semibold text-lg'><IoRemoveCircleOutline className='cursor-pointer text-pink-500'/><span className='mx-2'>1</span><IoAddCircleOutline className='cursor-pointer text-pink-500'/></div>
+                        </div>
+                    </li>
+                </ol>
+
+                <button className="flex mt-16 text-white bg-pink-500 border-0 py-2 px-6 focus:outline-none hover:bg-pink-600 rounded text-sm"><BsBagCheckFill className='m-1'/>Checkout</button>
+            </div>
+
         </div>
     )
 }
