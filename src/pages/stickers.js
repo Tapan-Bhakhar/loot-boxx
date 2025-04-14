@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 
-const Mugs = () => {
+const Stickers = () => {
   return (
     <div>
       <section className="text-gray-600 body-font">
@@ -14,7 +14,7 @@ const Mugs = () => {
                   <img
                     alt="ecommerce"
                     className="mx-auto h-[200px] w-[200px] object-contain p-2 bg-white rounded"
-                    src="https://m.media-amazon.com/images/I/41+KjIEAXRL._SY300_SX300_.jpg" />
+                    src="https://rukminim2.flixcart.com/image/832/832/xif0q/shopsy-sticker/x/i/n/large-decorative-wall-sticker-100-woa-116-modern-creations-original-imah8zfw4hzxzhg9.jpeg?q=70&crop=false" />
                 </p>
                 <div className="mt-4">
                   <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-shirts</h3>
@@ -31,4 +31,4 @@ const Mugs = () => {
   )
 }
 
-export default Mugs
+export default Stickers
