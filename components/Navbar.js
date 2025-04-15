@@ -24,7 +24,7 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
     const ref = useRef()
 
     return (
-        <div className='flex flex-col md:flex-row md:justify-start justify-center items-center py-2 shadow-md'>
+        <div className='flex flex-col md:flex-row md:justify-start justify-center items-center py-2 shadow-md sticky top-0 bg-white z-10'>
             <div className="logo mx-5">
                 <Link href="/" className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
                     <Image src="/logo.png" alt="Logo" width={150} height={40} />
@@ -43,7 +43,7 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
                 <IoCartOutline className='text-2xl md:text-4xl' />
             </div>
 
-            <div ref={ref} className="SLIDECART z-[999] w-75 h-full absolute top-0 right-0 bg-pink-100 px-8 py-10 transform transition-transform translate-x-full">
+            <div ref={ref} className="SLIDECART z-[999] w-75 h-[100vh] absolute top-0 right-0 bg-pink-100 px-8 py-10 transform transition-transform translate-x-full">
                 <h2 className='font-bold text-xl text-center pt-3'>Shopping cart </h2>
                 <span onClick={toggleCart} className="absolute top-4 right-4 cursor-pointer text-3xl text-pink-500"><IoCloseCircleSharp /></span>
                 <ol className='list-decimal font-semibold'>
