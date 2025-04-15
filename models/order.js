@@ -46,4 +46,5 @@ const OrderSchema = new mongoose.Schema({
 
 }, { timestamps: true });
 
+mongoose.models = {}; // Clear the models cache to avoid duplicate model error
 export default mongoose.model('Order', OrderSchema);

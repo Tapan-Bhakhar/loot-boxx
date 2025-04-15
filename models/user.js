@@ -20,4 +20,5 @@ const UserSchema = new mongoose.Schema({
 
 }, { timestamps: true });
 
-export default mongoose.model('Product', UserSchema);
+mongoose.models = {}; // Clear the models cache to avoid duplicate model error
+export default mongoose.model('User', UserSchema);
