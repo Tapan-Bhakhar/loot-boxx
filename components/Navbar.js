@@ -5,11 +5,6 @@ import { IoCartOutline, IoCloseCircleSharp, IoAddCircleOutline, IoRemoveCircleOu
 import { BsBagCheckFill } from "react-icons/bs";
 
 const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
-    // console.log(cart)
-    console.log(subTotal)
-    // console.log(addToCart)
-    // console.log(removeFromCart)
-    // console.log(clearCart)
     const toggleCart = () => {
         if (ref.current.classList.contains('translate-x-full')) {
             ref.current.classList.remove('translate-x-full')
