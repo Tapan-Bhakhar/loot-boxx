@@ -43,7 +43,7 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
                 <IoCartOutline className='text-2xl md:text-4xl' />
             </div>
 
-            <div ref={ref} className="SLIDECART w-75 h-full absolute top-0 right-0 bg-pink-100 px-8 py-10 transform transition-transform translate-x-full">
+            <div ref={ref} className="SLIDECART z-[999] w-75 h-full absolute top-0 right-0 bg-pink-100 px-8 py-10 transform transition-transform translate-x-full">
                 <h2 className='font-bold text-xl text-center pt-3'>Shopping cart </h2>
                 <span onClick={toggleCart} className="absolute top-4 right-4 cursor-pointer text-3xl text-pink-500"><IoCloseCircleSharp /></span>
                 <ol className='list-decimal font-semibold'>

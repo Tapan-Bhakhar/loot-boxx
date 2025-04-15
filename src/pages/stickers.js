@@ -10,7 +10,7 @@ const Stickers = () => {
 
             <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-lg m-4">
               <Link href={"/product/wear-the-look"}>
-                <p className="block relative rounded overflow-hidden">
+                <p className="block relative z-0 rounded overflow-hidden">
                   <img
                     alt="ecommerce"
                     className="mx-auto h-[200px] w-[200px] object-contain p-2 bg-white rounded"

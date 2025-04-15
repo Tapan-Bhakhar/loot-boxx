@@ -10,7 +10,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="relative w-full h-130"> {/* Set desired height here */}
+      <div className="relative z-0 w-full h-130"> {/* Set desired height here */}
         <Image
           src="/home.png"
           alt="Home Banner"
