@@ -20,6 +20,7 @@ export default function App({ Component, pageProps }) {
       const cartData = localStorage.getItem('cart');
       if (typeof cartData === 'string') {
         setCart(JSON.parse(cartData));
+        saveCart(JSON.parse(cartData));
       }
     } catch (error) {
       console.error("Error parsing cart:", error);
@@ -79,7 +80,7 @@ export default function App({ Component, pageProps }) {
   }
 
   return <>
-    <Navbar cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} clearCart={clearCart} subTotal={subTotal} />
+    <Navbar key={subTotal} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} clearCart={clearCart} subTotal={subTotal} />
     <Component cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} clearCart={clearCart} subTotal={subTotal}{...pageProps} />
     <Footer />
   </>
