@@ -3,6 +3,7 @@ import Link from 'next/link'
 import React, { useRef } from 'react'
 import { IoCartOutline, IoCloseCircleSharp, IoAddCircleOutline, IoRemoveCircleOutline } from "react-icons/io5"
 import { BsBagCheckFill } from "react-icons/bs";
+import { MdAccountCircle } from "react-icons/md";
 
 const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
     const toggleCart = () => {
@@ -34,8 +35,9 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
                 </ul>
             </div>
 
-            <div onClick={toggleCart} className="CART absolute right-0 mx-5 top-4 cursor-pointer text-pink-500">
-                <IoCartOutline className='text-2xl md:text-4xl' />
+            <div className="CART absolute right-0 mx-5 top-4 cursor-pointer text-pink-500 flex">
+                <Link href={'/login'}> <MdAccountCircle className='text-2xl md:text-4xl mx-2'/></Link>
+                <IoCartOutline onClick={toggleCart} className='text-2xl md:text-4xl' />
             </div>
 
             {/* <div ref={ref} className={`SLIDECART z-[999] w-75 h-[100vh] absolute top-0 right-0 bg-pink-100 px-8 py-10 transform transition-transform ${Object.keys(cart).length !== 0 ? 'translate-x-0': 'translate-x-full'}`}> */}
